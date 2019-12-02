@@ -41,7 +41,6 @@ module.exports = {
                 firstName: req.body.firstName,
                 lastName: req.body.lastName
             }).then((created) => {
-                console.log('hola');
                 return res.status(201).send({
                     "message": "User created!",
                     "details": created
