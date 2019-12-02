@@ -70,7 +70,7 @@ module.exports = {
                 if (err) return res.sendStatus(500);
                 if (result) {
                     let payload = { id: user.id };
-                    let token = jwt.sign(payload, utils.secret);
+                    let token = jwt.sign(payload, utils.secret, { expiresIn: '30m' });
                     // Now we can save this token with Express, so we can call res.locals.token
                     // anywhere in our backend
                     res.locals.token = token;
