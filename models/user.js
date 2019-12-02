@@ -21,7 +21,13 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-  }, {});
+  }, {
+    hooks: {
+      beforeCreate: (user, options) => {
+        user.username = user.username.toLowerCase();
+      }
+    }
+  });
   User.associate = function (models) {
     // associations can be defined here
   };
