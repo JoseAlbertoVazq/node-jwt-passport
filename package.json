@@ -1,0 +1,32 @@
+{
+  "name": "passport-jwt-sequelize",
+  "version": "0.0.1",
+  "description": "Demo example of JWT Authorization implementation in a project using NodeJS, Express, Sequelize and Passport",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "keywords": [
+    "passport",
+    "jwt",
+    "node",
+    "sequelize",
+    "express",
+    "javascript"
+  ],
+  "author": "José Alberto Vázquez (@JoseAlbertoVazq)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.0.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "sequelize": "^5.21.2",
+    "sequelize-cli": "^5.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.1"
+  }
+}
