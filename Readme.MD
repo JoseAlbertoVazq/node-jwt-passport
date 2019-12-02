@@ -109,7 +109,8 @@ https://www.getpostman.com/collections/fb0f7beb4fecabcbbbcd
 
 José Alberto Vázquez López
 
-https://www.linkedin.com/in/josealbertovazq/
-https://twitter.com/JoseAlbertoVazq
-https://www.instagram.com/JoseAlbertoVazq
-https://www.facebook.com/JoseAlbertoVazq
+You can find me in: 
+- Linkedin: https://www.linkedin.com/in/josealbertovazq/
+- Twitter: https://twitter.com/JoseAlbertoVazq
+- Instagram: https://www.instagram.com/JoseAlbertoVazq
+- Facebook: https://www.facebook.com/JoseAlbertoVazq
