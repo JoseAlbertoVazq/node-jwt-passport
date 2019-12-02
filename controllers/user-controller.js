@@ -46,8 +46,8 @@ module.exports = {
                     "message": "User created!",
                     "details": created
                 });
-            }).catch(() => res.status(500).send('Error 1'));
-        }).catch(() => res.status(500).send('Error 2'));
+            }).catch(() => res.sendStatus(500));
+        }).catch(() => res.sendStatus(500));
     },
 
     login(req, res) {
