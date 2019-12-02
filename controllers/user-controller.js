@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const User = require('../models').User;
 const Op = Sequelize.Op;
 const jwt = require('jsonwebtoken');
-const secret = 'sequelizExpress';
+const utils = require('../config/utils');
 const bcrypt = require('bcrypt');
 const SALT_NUMBER = 10;
 module.exports = {
@@ -70,7 +70,7 @@ module.exports = {
                 if (err) return res.sendStatus(500);
                 if (result) {
                     let payload = { id: user.id };
-                    let token = jwt.sign(payload, secret);
+                    let token = jwt.sign(payload, utils.secret);
                     // Now we can save this token with Express, so we can call res.locals.token
                     // anywhere in our backend
                     res.locals.token = token;

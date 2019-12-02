@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const utils = require('./config/utils');
 const userRoutes = require('./routes/user-routes');
 const userController = require('./controllers/user-controller');
 // import passport and passport-jwt modules
@@ -13,7 +14,7 @@ let ExtractJwt = passportJWT.ExtractJwt;
 let JwtStrategy = passportJWT.Strategy;
 let jwtOptions = {};
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-jwtOptions.secretOrKey = 'sequelizExpress';
+jwtOptions.secretOrKey = utils.secret;
 
 // lets create our strategy for web token
 let strategy = new JwtStrategy(jwtOptions, (jwt_payload, next) => {
