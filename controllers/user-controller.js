@@ -66,7 +66,7 @@ module.exports = {
             } else {
                 return res.sendStatus(400);
             }
-        }).catch(() => res.sendStatus(500));
+        }).catch(() => res.sendStatus(404));
     },
     // helper method for jwt
     getUser(id) {
