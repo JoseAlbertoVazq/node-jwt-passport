@@ -7,7 +7,6 @@ const bcrypt = require('bcrypt');
 const SALT_NUMBER = 10;
 module.exports = {
     getUsers(req, res) {
-        console.log(res.locals.token);
         return User.findAll()
             .then((users) => res.status(200).send(users))
             .catch(() => res.sendStatus(500));
