@@ -71,7 +71,7 @@ module.exports = {
                 if (result) {
                     let payload = { id: user.id };
                     let token = jwt.sign(payload, utils.secret, { expiresIn: '30m' });
-                    user.update({ token: token });
+                    user.update({ access_token: token });
                     return res.status(200).send({ "message": "Login successful", "token": token });
                 } else {
                     return res.sendStatus(400);

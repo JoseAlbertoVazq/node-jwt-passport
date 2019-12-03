@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    token: {
+    access_token: {
       type: DataTypes.TEXT,
       allowNull: true
     },
