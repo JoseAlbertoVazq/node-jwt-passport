@@ -7,6 +7,7 @@ const bcrypt = require('bcrypt');
 const SALT_NUMBER = 10;
 module.exports = {
     getUsers(req, res) {
+        console.log(res.locals.token);
         return User.findAll()
             .then((users) => res.status(200).send(users))
             .catch(() => res.sendStatus(500));
@@ -71,9 +72,7 @@ module.exports = {
                 if (result) {
                     let payload = { id: user.id };
                     let token = jwt.sign(payload, utils.secret, { expiresIn: '30m' });
-                    // Now we can save this token with Express, so we can call res.locals.token
-                    // anywhere in our backend
-                    res.locals.token = token;
+                    user.update({ token: token });
                     return res.status(200).send({ "message": "Login successful", "token": token });
                 } else {
                     return res.sendStatus(400);

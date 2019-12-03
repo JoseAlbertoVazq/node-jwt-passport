@@ -21,6 +21,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
+    token: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
   }, {
     hooks: {
       beforeCreate: (user, options) => {
