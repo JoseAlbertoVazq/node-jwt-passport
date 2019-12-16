@@ -7,7 +7,11 @@ const bcrypt = require('bcrypt');
 const SALT_NUMBER = 10;
 module.exports = {
     getUsers(req, res) {
-        return User.findAll()
+        return User.findAll({
+            attributes: {
+                exclude: ['id','password', 'access_token', 'createdAt','updatedAt']
+            }
+        })
             .then((users) => res.status(200).send(users))
             .catch(() => res.sendStatus(500));
     },
