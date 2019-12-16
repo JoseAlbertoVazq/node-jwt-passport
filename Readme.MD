@@ -57,7 +57,7 @@ npx sequelize-cli db:drop
 The server port by default is 3000. Run this and you will have this
 beautiful backend in http://localhost:3000
 
-## Ok, you have made a really good job but... where are the routes?
+## Ok, you did a really good job but... where are the routes?
 
 Every single route are in app.js. 
 
