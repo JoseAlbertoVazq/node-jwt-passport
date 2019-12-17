@@ -12,7 +12,10 @@ module.exports = {
                 exclude: ['id', 'password', 'access_token', 'createdAt', 'updatedAt']
             }
         })
-            .then((users) => res.status(200).send(users))
+            .then((users) => res.status(200).send({
+                "message": "OK",
+                "details": users
+            }))
             .catch(() => res.sendStatus(500));
     },
 
