@@ -9,7 +9,7 @@ module.exports = {
     getUsers(req, res) {
         return User.findAll({
             attributes: {
-                exclude: ['id','password', 'access_token', 'createdAt','updatedAt']
+                exclude: ['id', 'password', 'access_token', 'createdAt', 'updatedAt']
             }
         })
             .then((users) => res.status(200).send(users))
@@ -51,9 +51,15 @@ module.exports = {
                     firstName: req.body.firstName,
                     lastName: req.body.lastName
                 }).then((created) => {
+                    let payload = { id: created.id };
+                    let token = jwt.sign(payload, utils.secret, { expiresIn: '30m' });
+                    created.update({ access_token: token });
                     return res.status(201).send({
                         "message": "User created!",
-                        "details": created
+                        "details": {
+                            "username": created.username,
+                            "access_token": created.access_token
+                        }
                     });
                 }).catch((error) => res.status(500).send(error));
             })
