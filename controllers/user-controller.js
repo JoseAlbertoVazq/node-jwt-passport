@@ -96,6 +96,7 @@ module.exports = {
             }))
         }).catch(() => res.status(404).send(utils.notFound));
     },
+
     // helper method for jwt
     getUser(id) {
         return User.findOne({
