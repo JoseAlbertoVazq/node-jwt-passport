@@ -58,7 +58,7 @@ module.exports = {
                     let token = jwt.sign(payload, utils.secret, { expiresIn: '30m' });
                     created.update({ access_token: token });
                     return res.status(201).send({
-                        "message": "User created!",
+                        "message": "OK",
                         "details": {
                             "username": created.username,
                             "access_token": created.access_token
@@ -86,7 +86,7 @@ module.exports = {
                     let token = jwt.sign(payload, utils.secret, { expiresIn: '30m' });
                     user.update({ access_token: token });
                     return res.status(200).send({
-                        "message": "Login successful",
+                        "message": "OK",
                         "details": {
                             "access_token": token
                         }
