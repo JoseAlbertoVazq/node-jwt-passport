@@ -16,7 +16,7 @@ module.exports = {
                 "message": "OK",
                 "details": users
             }))
-            .catch(() => res.sendStatus(500));
+            .catch(() => res.status(500).send(utils.internal));
     },
 
     register(req, res) {
@@ -26,7 +26,7 @@ module.exports = {
             !req.body.email ||
             !req.body.firstName ||
             !req.body.lastName) {
-            return res.sendStatus(400);
+            return res.status(400).send(utils.badRequest);
         }
 
         User.findOne({
@@ -37,16 +37,15 @@ module.exports = {
                 ]
             }
         }).then((found) => {
-
             if (found) {
-                return res.sendStatus(409);
+                return res.status(409).send(utils.conflict);
             }
             if (req.body.password !== req.body.confirmPassword) {
-                return res.sendStatus(400);
+                return res.status(400).send(utils.badRequest);
             }
             // Before creating the user in our db, let's bcrypt it!
             bcrypt.hash(req.body.password, SALT_NUMBER, (err, hash) => {
-                if (err || hash == undefined) return res.sendStatus(500);
+                if (err || hash == undefined) return res.status(500).send(utils.internal);
                 User.create({
                     username: req.body.username,
                     password: hash,
@@ -66,21 +65,21 @@ module.exports = {
                     });
                 }).catch((error) => res.status(500).send(error));
             })
-        }).catch(() => res.sendStatus(500));
+        }).catch(() => res.status(500).send(utils.internal));
     },
 
     login(req, res) {
         if (!req.body.username || !req.body.password) {
-            return res.sendStatus(400);
+            return res.status(400).send(utils.badRequest);
         }
         return User.findOne({
             where: { username: req.body.username }
         }).then((user) => {
-            if (!user) return res.sendStatus(400);
+            if (!user) return res.status(400).send(utils.badRequest);
             // Compare the password attribute of the body request with
             // bcrypted password stored in db
             bcrypt.compare(req.body.password, user.password, ((err, result) => {
-                if (err) return res.sendStatus(500);
+                if (err) return res.status(500).send(utils.internal);
                 if (result) {
                     let payload = { id: user.id };
                     let token = jwt.sign(payload, utils.secret, { expiresIn: '30m' });
@@ -92,7 +91,7 @@ module.exports = {
                         }
                     });
                 } else {
-                    return res.sendStatus(400);
+                    return res.status(400).send(utils.badRequest);
                 }
             }))
         }).catch(() => res.sendStatus(404));
