@@ -82,7 +82,12 @@ module.exports = {
                     let payload = { id: user.id };
                     let token = jwt.sign(payload, utils.secret, { expiresIn: '30m' });
                     user.update({ access_token: token });
-                    return res.status(200).send({ "message": "Login successful", "token": token });
+                    return res.status(200).send({
+                        "message": "Login successful",
+                        "details": {
+                            "access_token": token
+                        }
+                    });
                 } else {
                     return res.sendStatus(400);
                 }
