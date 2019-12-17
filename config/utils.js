@@ -19,5 +19,9 @@ module.exports = {
     forbidden: {
         "message": "KO",
         "details": "You are not allowed to access this resource"
+    },
+    notFound: {
+        "message": "KO",
+        "details": "Resource not found"
     }
 }

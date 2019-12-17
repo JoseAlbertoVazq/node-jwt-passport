@@ -94,7 +94,7 @@ module.exports = {
                     return res.status(400).send(utils.badRequest);
                 }
             }))
-        }).catch(() => res.sendStatus(404));
+        }).catch(() => res.status(404).send(utils.notFound));
     },
     // helper method for jwt
     getUser(id) {
